@@ -56,6 +56,7 @@ public class ssCommand implements CommandExecutor, Listener {
         paperm.setDisplayName("§aChoisir une sanction");
         skm.setOwner(name.getName());
         inv.setItem(13, head);
+        inv.setItem(22, paper);
     }
 
     @EventHandler
