@@ -3,7 +3,7 @@ package fr.diax.ss;
 import fr.diax.ss.command.ssCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ssMain extends JavaPlugin {
+public class SsMain extends JavaPlugin {
 
     @Override
     public void onEnable() {

@@ -1,6 +1,6 @@
 name: SecurityServer
 version: 1.0
-main: fr.diax.ss.ssMain
+main: fr.diax.ss.SsMain
 author: Gamingdiax955
 commands:
   ss:
