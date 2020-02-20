@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class SsCommand implements CommandExecutor, Listener {
 
-    public String préfix = "§6SécurityServer §5> ";
+    public String prefix = "§6SécurityServer §5> ";
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
@@ -30,7 +30,7 @@ public class SsCommand implements CommandExecutor, Listener {
             }
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                p.sendMessage(préfix+"§cLe joueur demandée n'est pas en ligne");
+                p.sendMessage(prefix + "§cLe joueur demandée n'est pas en ligne");
                 return false;
             }
 
