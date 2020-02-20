@@ -21,22 +21,22 @@ public class SsCommand implements CommandExecutor, Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
-            Player p = (Player) sender;
+            Player player = (Player) sender;
 
 
             if (args.length == 0) {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c") + "/ss <Player>");
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c") + "/ss <Player>");
                 return false;
             }
             Player target = Bukkit.getPlayer(args[0]);
             if (target == null) {
-                p.sendMessage(prefix + "§cLe joueur demandée n'est pas en ligne");
+                player.sendMessage(prefix + "§cLe joueur demandée n'est pas en ligne");
                 return false;
             }
 
-            Inventory inv = Bukkit.createInventory(p, 4*9, "§eSécurityServer > §9"+target.getName());
-            ssInventory(target,inv);
-            p.openInventory(inv);
+            Inventory inv = Bukkit.createInventory(player, 4 * 9, "§eSécurityServer > §9" + target.getName());
+            ssInventory(target, inv);
+            player.openInventory(inv);
 
 
         }
@@ -48,12 +48,12 @@ public class SsCommand implements CommandExecutor, Listener {
 
         Material type;
         ItemStack head = new ItemStack(Material.SKULL);
-        SkullMeta skm = (SkullMeta) head.getItemMeta();
+        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
         ItemStack paper = new ItemStack(Material.PAPER);
-        ItemMeta paperm = paper.getItemMeta();
+        ItemMeta paperMeta = paper.getItemMeta();
 
-        paperm.setDisplayName("§aChoisir une sanction");
-        skm.setOwner(name.getName());
+        paperMeta.setDisplayName("§aChoisir une sanction");
+        headMeta.setOwner(name.getName());
         inv.setItem(13, head);
         inv.setItem(22, paper);
     }
