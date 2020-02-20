@@ -44,7 +44,7 @@ public class SsCommand implements CommandExecutor, Listener {
         return false;
     }
 
-    public void ssInventory(Player name,Inventory inv) {
+    public void ssInventory(Player player, Inventory inventory) {
 
 
         ItemStack head = new ItemStack(Material.SKULL);
@@ -53,16 +53,16 @@ public class SsCommand implements CommandExecutor, Listener {
         ItemMeta paperMeta = paper.getItemMeta();
 
         paperMeta.setDisplayName("§aChoisir une sanction");
-        headMeta.setOwner(name.getName());
-        inv.setItem(13, head);
-        inv.setItem(22, paper);
+        headMeta.setOwner(player.getName());
+        inventory.setItem(13, head);
+        inventory.setItem(22, paper);
     }
 
     @EventHandler
     public void onInteract(InventoryInteractEvent event) {
-        Player Player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
-        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + Player.getName())) {
+        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + player.getName())) {
             event.setCancelled(true);
         }
     }
