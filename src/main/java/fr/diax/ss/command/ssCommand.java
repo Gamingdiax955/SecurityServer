@@ -1,22 +1,18 @@
 package fr.diax.ss.command;
 
-import net.minecraft.server.EntityPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
-import org.bukkit.block.Block;
-import org.bukkit.block.Skull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 public class ssCommand implements CommandExecutor, Listener {
@@ -49,15 +45,16 @@ public class ssCommand implements CommandExecutor, Listener {
         return false;
     }
 
-    public void ssInventory(Player name,Inventory inv){
+    public void ssInventory(Player name,Inventory inv) {
 
         Material type;
         ItemStack head = new ItemStack(Material.SKULL);
         SkullMeta skm = (SkullMeta) head.getItemMeta();
-
+        ItemStack paper = new ItemStack(Material.PAPER);
+        ItemMeta paperm = paper.getItemMeta();
 
         skm.setOwner(name.getName());
-        inv.setItem(13, (ItemStack) head);
+        inv.setItem(13, head);
     }
 
     @EventHandler
