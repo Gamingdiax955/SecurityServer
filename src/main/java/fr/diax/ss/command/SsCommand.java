@@ -20,17 +20,16 @@ public class SsCommand implements CommandExecutor, Listener {
     public String préfix = "§6SécurityServer §5> ";
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
-        Player p = (Player) sender;
-
-
         if (sender instanceof Player) {
+            Player p = (Player) sender;
+
+
             if (args.length == 0) {
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c")+"/ss <Player>");
-            return false;
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c") + "/ss <Player>");
+                return false;
             }
             Player target = Bukkit.getPlayer(args[0]);
-            if (target == null){
+            if (target == null) {
                 p.sendMessage(préfix+"§cLe joueur demandée n'est pas en ligne");
                 return false;
             }
