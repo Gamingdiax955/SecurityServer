@@ -1,22 +1,25 @@
 package fr.diax.ss.cheattypeEnum;
 
+import org.bukkit.entity.Player;
+
 public enum CheatType {
 
-    Fly("Fly"),
-    Freecam("Freecam");
-    private String name;
+    Fly(CheatType.Fly);
 
+    CheatType type;
 
-    private CheatType type;
-
-    CheatType(String name) {
-        this.name = name;
-
-
+    CheatType(CheatType type) {
+        this.type = type;
     }
 
-    public CheatType getType() {
+    public CheatType getType(Player player) {
+        if (type.getType(player) == CheatType.Fly) {
+            if (player.getLocation().getY() > 5) {
+
+            }
+        }
         return type;
     }
+
 
 }

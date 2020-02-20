@@ -1,5 +1,6 @@
 package fr.diax.ss.command;
 
+import fr.diax.ss.cheattypeEnum.CheatType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,6 +19,11 @@ import org.bukkit.inventory.meta.SkullMeta;
 public class SsCommand implements CommandExecutor, Listener {
 
     private final String prefix = "§6SécurityServer §5> ";
+    private final CheatType type;
+
+    public SsCommand(CheatType type) {
+        this.type = type;
+    }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
@@ -26,6 +32,14 @@ public class SsCommand implements CommandExecutor, Listener {
 
             if (args.length == 0) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c") + "/ss <Player>");
+                return false;
+            }
+            if (args.length == 2) {
+                if (args[0].equalsIgnoreCase("fl")) {
+                    Player target = Bukkit.getPlayer(args[1]);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', "§a") + "Vérification en cours...");
+                }
+
                 return false;
             }
             Player target = Bukkit.getPlayer(args[0]);
@@ -64,6 +78,12 @@ public class SsCommand implements CommandExecutor, Listener {
 
         if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + player.getName())) {
             event.setCancelled(true);
+        }
+    }
+
+    public void checkfly(Player player) {
+        if (type.getType(player) == CheatType.Fly) {
+
         }
     }
 
