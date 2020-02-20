@@ -1,0 +1,8 @@
+name: SecurityServer
+version: 1.0
+main: fr.diax.ss.ssMain
+author: Gamingdiax955
+commands:
+  ss:
+    description: Commande de gestion
+    permission: ss.*

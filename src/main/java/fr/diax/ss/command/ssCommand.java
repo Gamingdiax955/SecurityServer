@@ -1,0 +1,72 @@
+package fr.diax.ss.command;
+
+import net.minecraft.server.EntityPlayer;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.SkullType;
+import org.bukkit.block.Block;
+import org.bukkit.block.Skull;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
+
+public class ssCommand implements CommandExecutor, Listener {
+
+    public String préfix = "§6SécurityServer §5> ";
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+        Player p = (Player)sender;
+
+
+        if (sender instanceof Player){
+            if(args.length == 0){
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c")+"/ss <Player>");
+            return false;
+            }
+            Player target = Bukkit.getPlayer(args[0]);
+            if (target == null){
+                p.sendMessage(préfix+"§cLe joueur demandée n'est pas en ligne");
+                return false;
+            }
+
+            Inventory inv = Bukkit.createInventory(p, 4*9, "§eSécurityServer > §9"+target.getName());
+            ssInventory(target,inv);
+            p.openInventory(inv);
+
+
+        }
+
+        return false;
+    }
+
+    public void ssInventory(Player name,Inventory inv){
+
+        Material type;
+        ItemStack head = new ItemStack(Material.SKULL);
+        SkullMeta skm = (SkullMeta) head.getItemMeta();
+
+
+        skm.setOwner(name.getName());
+        inv.setItem(13, (ItemStack) head);
+    }
+
+    @EventHandler
+    public void onMove(InventoryInteractEvent event){
+        Player p = (Player) event.getWhoClicked();
+
+        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9"+p.getName())){
+            event.setCancelled(true);
+        }
+    }
+
+}
