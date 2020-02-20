@@ -59,7 +59,7 @@ public class SsCommand implements CommandExecutor, Listener {
     }
 
     @EventHandler
-    public void OnMove(InventoryInteractEvent event) {
+    public void onNoMoveItem(InventoryInteractEvent event) {
         Player p = (Player) event.getWhoClicked();
 
         if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + p.getName())) {
