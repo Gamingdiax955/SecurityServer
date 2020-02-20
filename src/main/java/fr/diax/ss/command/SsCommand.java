@@ -34,9 +34,9 @@ public class SsCommand implements CommandExecutor, Listener {
                 return false;
             }
 
-            Inventory inv = Bukkit.createInventory(player, 4 * 9, "§eSécurityServer > §9" + target.getName());
-            ssInventory(target, inv);
-            player.openInventory(inv);
+            Inventory inventory = Bukkit.createInventory(player, 4 * 9, "§eSécurityServer > §9" + target.getName());
+            ssInventory(target, inventory);
+            player.openInventory(inventory);
 
 
         }
@@ -46,7 +46,7 @@ public class SsCommand implements CommandExecutor, Listener {
 
     public void ssInventory(Player name,Inventory inv) {
 
-        Material type;
+
         ItemStack head = new ItemStack(Material.SKULL);
         SkullMeta headMeta = (SkullMeta) head.getItemMeta();
         ItemStack paper = new ItemStack(Material.PAPER);
@@ -60,9 +60,9 @@ public class SsCommand implements CommandExecutor, Listener {
 
     @EventHandler
     public void onInteract(InventoryInteractEvent event) {
-        Player p = (Player) event.getWhoClicked();
+        Player Player = (Player) event.getWhoClicked();
 
-        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + p.getName())) {
+        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + Player.getName())) {
             event.setCancelled(true);
         }
     }
