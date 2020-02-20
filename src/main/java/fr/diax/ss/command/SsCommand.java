@@ -59,10 +59,10 @@ public class SsCommand implements CommandExecutor, Listener {
     }
 
     @EventHandler
-    public void onMove(InventoryInteractEvent event){
+    public void OnMove(InventoryInteractEvent event) {
         Player p = (Player) event.getWhoClicked();
 
-        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9"+p.getName())){
+        if (event.getInventory().getTitle().equalsIgnoreCase("§eSécurityServer > §9" + p.getName())) {
             event.setCancelled(true);
         }
     }
