@@ -17,7 +17,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class SsCommand implements CommandExecutor, Listener {
 
-    public String prefix = "§6SécurityServer §5> ";
+    private String prefix = "§6SécurityServer §5> ";
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player) {
