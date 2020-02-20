@@ -53,6 +53,7 @@ public class ssCommand implements CommandExecutor, Listener {
         ItemStack paper = new ItemStack(Material.PAPER);
         ItemMeta paperm = paper.getItemMeta();
 
+        paperm.setDisplayName("§aChoisir une sanction");
         skm.setOwner(name.getName());
         inv.setItem(13, head);
     }
