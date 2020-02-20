@@ -15,17 +15,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-public class ssCommand implements CommandExecutor, Listener {
+public class SsCommand implements CommandExecutor, Listener {
 
     public String préfix = "§6SécurityServer §5> ";
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        Player p = (Player)sender;
+        Player p = (Player) sender;
 
 
-        if (sender instanceof Player){
-            if(args.length == 0){
+        if (sender instanceof Player) {
+            if (args.length == 0) {
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "§c")+"/ss <Player>");
             return false;
             }
